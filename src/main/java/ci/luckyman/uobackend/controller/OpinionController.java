@@ -30,7 +30,7 @@ public class OpinionController {
     }
 
     @DeleteMapping(path = "{id}")
-    public  void deleteOpinion(@PathVariable Long id) {
+    public  void     deleteOpinion(@PathVariable Long id) {
         opinionService.deleteOpinion(id);
     }
 }
