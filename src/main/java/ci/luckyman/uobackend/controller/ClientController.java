@@ -29,21 +29,21 @@ public class ClientController {
     }
 
     @GetMapping(value = "{id}", produces = APPLICATION_JSON_VALUE)
-    public Client getClientById(@PathVariable Long id){
+    public Client getClientById(@PathVariable Long id) {
         return clientService.search(id);
     }
+
     @DeleteMapping(path = "{id}")
-    public ResponseEntity<String> deleteClientById(@PathVariable Long id){
+    public ResponseEntity<String> deleteClientById(@PathVariable Long id) {
         Client deletedClient = clientService.deleteClientById(id);
-        if (deletedClient == null){
+        if (deletedClient == null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Aucun client n'existe pour cet ID");
         }
-       return ResponseEntity.status(HttpStatus.ACCEPTED).body("Client supprime avec succes");
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Client supprime avec succes");
     }
 
     @PutMapping(path = "/{id}", consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> updateClient(@PathVariable Long id, @RequestBody Client client){
-       return clientService.updateClient(id, client);
+    public ResponseEntity<String> updateClient(@PathVariable Long id, @RequestBody Client client) {
+        return clientService.updateClient(id, client);
     }
-
 }
